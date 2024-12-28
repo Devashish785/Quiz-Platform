@@ -1,0 +1,26 @@
+<!-- templates/question.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CodeTitan - Question {{ question_number }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="question-container">
+            <h2 id = "he_question">Question {{ question_number }}</h2>
+            <p class="question-text">{{ question.question_text }}</p>
+            
+            <form method="post">
+                {% for i in range(question.options|length) %}
+                <div class="option">
+                    <input type="checkbox" name="answer" value="{{ i }}" id="option{{ i }}">
+                    <label for="option{{ i }}">{{ question.options[i] }}</label>
+                </div>
+                {% endfor %}
+                <button type="submit" class="button">Next Question</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

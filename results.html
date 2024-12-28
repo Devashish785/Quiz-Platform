@@ -1,0 +1,28 @@
+<!-- templates/results.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CodeTitan - Quiz Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 id = "quiz_results">Quiz Results</h1>
+        <div class="results">
+            <p id = "result1">Your Score: {{ score|round(2) }} / {{ max_possible }}</p>
+            <p id = "result2">Percentage: {{ percentage|round(2) }}%</p>
+            
+            {% if percentage >= 90 %}
+                <p class="grade excellent">Excellent! 🏆</p>
+            {% elif percentage >= 75 %}
+                <p class="grade good">Good Job! 👍</p>
+            {% elif percentage >= 60 %}
+                <p class="grade average">Keep Practicing! 📚</p>
+            {% else %}
+                <p class="grade needs-improvement">Need More Practice 💪</p>
+            {% endif %}
+        </div>
+        <a href="{{ url_for('home') }}" class="button">Try Again</a>
+    </div>
+</body>
+</html>
